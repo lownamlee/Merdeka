@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1728">
+  <meta name="description" content="Merdeka. A brighter Malaysia, together.">
+  <title>Merdeka — A Brighter Malaysia, Together</title>
+  <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64 128x128 256x256"
+    href="favicon.ico?v=white-20261002">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+
+</head>
+
+<body>
+  <div class="volume-control">
+    <button class="volume-toggle" type="button" aria-label="Volume" aria-expanded="false" aria-controls="volume-panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 9h4l5-4v14l-5-4H3z" />
+        <path class="volume-waves"
+          d="M15 7.5a6 6 0 0 1 0 9v-2a4 4 0 0 0 0-5zM18 4.6a10 10 0 0 1 0 14.8l-1.2-1.6a8 8 0 0 0 0-11.6z" />
+        <path class="volume-muted" d="m16 9 2 2 2-2 1.4 1.4-2 2 2 2-1.4 1.4-2-2-2 2-1.4-1.4 2-2-2-2z" />
+      </svg>
+    </button>
+    <div class="volume-panel" id="volume-panel" hidden>
+      <label class="volume-row" for="volume-music">
+        <span>Background music</span>
+        <input class="volume-slider" id="volume-music" type="range" min="0" max="100" step="1" value="100"
+          aria-valuetext="100%">
+      </label>
+      <label class="volume-row" for="volume-sounds">
+        <span>Other sounds</span>
+        <input class="volume-slider" id="volume-sounds" type="range" min="0" max="100" step="1" value="100"
+          aria-valuetext="100%">
+      </label>
+    </div>
+  </div>
+  <div class="boot-loader">
+    <span class="boot-label">LOADING</span>
+    <div class="boot-track" role="progressbar" aria-label="Loading opening artwork" aria-valuemin="0"
+      aria-valuemax="100" aria-valuenow="0"><span class="boot-fill"></span></div>
+  </div>
+  <div class="load-error" hidden>
+    <p role="alert">Some assets couldn't load. Check your connection and try again.</p>
+    <button class="load-retry" type="button">Try again</button>
+  </div>
+  <svg class="svg-definitions" width="0" height="0" aria-hidden="true">
+    <defs>
+      <filter id="loading-neon" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha" result="ink">
+          <feFuncA type="linear" slope="2.2" />
+        </feComponentTransfer>
+        <feFlood flood-color="#b4dcf4" result="blue" />
+        <feComposite in="blue" in2="ink" operator="in" />
+      </filter>
+    </defs>
+  </svg>
+  <div class="scene" data-phase="loading" aria-busy="true" aria-hidden="true" inert>
+    <div aria-hidden="true">
+      <img class="landscape" data-art="skyline" alt="">
+      <div class="cloud-layer">
+        <div class="cloud-field"><img class="cloud-panorama" data-art="clouds" alt=""></div>
+      </div>
+      <img class="tree-layer" data-art="trees" alt="">
+      <img class="crowd" data-art="crowd" alt="">
+      <div class="city-transition"><img data-art="city-transition" alt=""></div>
+      <div class="night"></div>
+      <div class="portrait split-art"><img class="upper" data-art="portrait-drawn-upper" alt=""><img class="lower"
+          data-art="portrait-drawn-lower" alt=""></div>
+      <div class="tower-transition">
+        <div class="tower-art split-art"><img class="upper" data-art="tower-night-upper" alt=""><img class="lower"
+            data-art="tower-night-lower" alt=""></div>
+      </div>
+      <img class="flag" data-art="flag" alt="">
+      <img class="spire" data-art="tower" alt="">
+      <div class="sun-flare"><img data-art="flare" alt=""></div>
+    </div>
+    <div class="orbit-layer" aria-hidden="true">
+      <div class="progress-orbit"><svg viewBox="0 0 250 250">
+          <g class="orbit-marks"></g>
+          <circle class="arc" cx="125" cy="125" r="110" />
+          <path class="audio-wave" />
+        </svg></div>
+    </div>
+    <div class="loader" role="progressbar" aria-label="Loading website" aria-valuemin="1" aria-valuemax="69"
+      aria-valuenow="1">
+      <div class="dial" aria-hidden="true"><span class="numerals"></span></div>
+      <img class="loading-label" data-art="loading" alt="" aria-hidden="true">
+      <div class="bar" aria-hidden="true">
+        <div class="fill"></div>
+      </div>
+    </div>
+    <span class="chant-counter" aria-hidden="true"></span>
+    <button class="merdeka-button" type="button" aria-label="MERDEKA! Play chant 1 of 3" aria-hidden="true"
+      inert>MERDEKA!</button>
+    <div class="caption people" aria-hidden="true"><img data-art="people" alt=""></div>
+    <div class="caption horizons" aria-hidden="true"><img data-art="horizons" alt=""></div>
+    <main class="hero" tabindex="-1"><img class="title-art" data-art="title" alt="" aria-hidden="true">
+      <div class="title-letters" role="group" aria-label="Explore Malaysia through MERDEKA"></div>
+      <h1 class="sr-only">MERDEKA</h1>
+      <p class="sr-only">A brighter Malaysia, together</p>
+    </main>
+    <button class="skip" type="button" hidden inert>Skip intro</button>
+    <button class="replay" type="button" aria-label="Replay opening animation" title="Replay opening" inert><svg
+        viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M15.5 7.5A6 6 0 1 0 16 11M15.5 3v4.5H11" />
+      </svg></button>
+    <p class="sr-only" aria-live="polite" id="status">Loading the website.</p>
+    <img hidden data-art="digits" alt="">
+  </div>
+  <div id="chapters"></div>
+  <svg class="svg-definitions" width="0" height="0" aria-hidden="true">
+    <defs>
+      <filter id="chapter-warp" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="7" result="noise" />
+        <feDisplacementMap id="chapter-displacement" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R"
+          yChannelSelector="B" />
+      </filter>
+    </defs>
+  </svg>
+  <noscript>
+    <main class="noscript-main">
+      <h1>MERDEKA</h1>
+      <p class="tagline">A brighter Malaysia, together</p>
+    </main>
+  </noscript>
+</body>
+
+</html>
